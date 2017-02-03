@@ -35,9 +35,8 @@ electrode(1)
 ## What about all the other elements?
 Any other element can be added using the gem.Appendable class as follows:
 ```JavaScript
-const anything = geometry.append(new gem.Appendable('anything',[arg1,[arg2,[argN]))
+const anything = geometry.append(new gem.Appendable('anything'[,arg1 [,arg2 [,argN]))
 ```
-where the first argument of the constructor is the instruction syntax and any subsequent arguments are to appear in brackets after the instruction.
+where the first argument of the constructor is the instruction syntax and any subsequent arguments will appear in brackets after the instruction.
 
 It is hoped that with future development, more elements can be added to simplify the usage of the library.
- 
