@@ -1,6 +1,9 @@
 const Entity = require('./lib/entity.js')
-const CommentEntity = require('./lib/entity-comment.js')
+const GroupedEntity = require('./lib/entity-grouped.js')
 const AppendableEntity = require('./lib/entity-appendable.js')
+const Comment = require('./lib/entity-comment.js')
+const PaDefine = require('./lib/entity-pa-define.js')
+
 
 import test from 'ava'
 
@@ -16,11 +19,32 @@ test('Entity: Renders with Args', function (t){
   t.is(new Entity('cmd','a','b',1,2).render(),'cmd(a,b,1,2)')
 })
 
+// GroupedEntity
+test('Grouped: Renders' , t => {
+  const grouped = new GroupedEntity()
+  grouped.append(new Entity('alpha'))
+  grouped.append(new Entity('beta'))
+  t.is(grouped.render('@',2),'@@alpha\n@@beta')
+})
+
+//AppendableEntity
+test('AppendableEntity: Renders', t =>{
+  const appendable = new AppendableEntity('Parent')
+  appendable.append(new Entity('child 1'))
+  appendable.append(new Entity('child 2'))
+  t.is(appendable.render('@',1),'@Parent\n@{\n@@child 1\n@@child 2\n@}')
+})
+
 // CommentEntity
 test('Comment: Empty Comment' ,t => {
-  const error =  t.throws( () => { new CommentEntity()},TypeError)
+  const error =  t.throws( () => { new Comment()},TypeError)
   t.true(error instanceof TypeError)
 })
 test('Comment: Renders', t =>{
-  t.is(new CommentEntity('I am some comment').render(), '; I am some comment')
+  t.is(new Comment('I am some comment').render(), '; I am some comment')
+})
+
+//PaDefine
+test('PaDefine: Renders' , t => {
+  t.is(new PaDefine(3,3,1,'planar','None','electrostatic',1).render(), 'pa_define(3,3,1,planar,None,electrostatic,1)')
 })
