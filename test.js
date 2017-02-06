@@ -36,6 +36,12 @@ test('AppendableEntity: Renders', t =>{
   t.is(appendable.render('@',1),'@Parent\n@{\n@@child 1\n@@child 2\n@}')
 })
 
+test('AppendableEntity: Quick Create Entity', t =>{
+  const appendable = new AppendableEntity('Parent')
+  appendable.append('child 1','arg1','arg2')
+  t.is(appendable.render('@',1),'@Parent\n@{\n@@child 1(arg1,arg2)\n@}')
+})
+
 // CommentEntity
 test('Comment: Empty Comment' ,t => {
   const error =  t.throws( () => { new Comment()},TypeError)
@@ -49,6 +55,8 @@ test('Comment: Renders', t =>{
 test('PaDefine: Renders' , t => {
   t.is(new PaDefine(3,3,1,'planar','None','electrostatic',1).render(), 'pa_define(3,3,1,planar,None,electrostatic,1)')
 })
+
+//
 
 //Geometry
 test('Geometry: Renders', t=>{
