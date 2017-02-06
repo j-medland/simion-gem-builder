@@ -1,0 +1,26 @@
+{
+  "name": "simion-gem-builder",
+  "version": "0.1.0",
+  "description": "A handy SIMION .GEM builder for node",
+  "main":"./lib/index",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-medland/simion-gem-builder.git"
+  },
+  "keywords": [
+    "SIMION",
+    ".gem"
+  ],
+  "author": "John Medland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j-medland/simion-gem-builder/issues"
+  },
+  "homepage": "https://github.com/j-medland/simion-gem-builder#readme",
+  "devDependencies": {
+    "ava": "^0.18.0"
+  }
+}
