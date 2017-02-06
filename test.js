@@ -3,7 +3,8 @@ const GroupedEntity = require('./lib/entity-grouped.js')
 const AppendableEntity = require('./lib/entity-appendable.js')
 const Comment = require('./lib/entity-comment.js')
 const PaDefine = require('./lib/entity-pa-define.js')
-
+const Geometry = require('./lib/geometry.js')
+const gem = require('./lib/index.js')
 
 import test from 'ava'
 
@@ -47,4 +48,15 @@ test('Comment: Renders', t =>{
 //PaDefine
 test('PaDefine: Renders' , t => {
   t.is(new PaDefine(3,3,1,'planar','None','electrostatic',1).render(), 'pa_define(3,3,1,planar,None,electrostatic,1)')
+})
+
+//Geometry
+test('Geometry: Renders', t=>{
+  const geo = new Geometry()
+  geo.paDefine(3,3,1,'planar','None','electrostatic',1)
+     .include('some-file')
+     .comment('some comment')
+     .append(new Entity('some-entity'))
+
+  t.is(geo.render(),'pa_define(3,3,1,planar,None,electrostatic,1)\ninclude(some-file)\n; some comment\nsome-entity')
 })

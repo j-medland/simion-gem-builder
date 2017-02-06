@@ -1,8 +1,8 @@
 {
   "name": "simion-gem-builder",
   "version": "0.1.0",
-  "description": "A handy gem builder for node",
-  "main": "run-test.js",
+  "description": "A handy SIMION .GEM builder for node",
+  "main":"./lib/index",
   "scripts": {
     "test": "ava"
   },
