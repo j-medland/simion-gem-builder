@@ -1,6 +1,6 @@
 {
   "name": "simion-gem-builder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A handy SIMION .GEM builder for node",
   "main":"./lib/index",
   "scripts": {

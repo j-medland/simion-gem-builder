@@ -20,8 +20,9 @@ const geometry = gem.geometry()
 geometry.paDefine(101,101,1,'planar','None','electrostatic', 1)
   .include('some-file')
   .comment('some comment')
-// add an electrode
-const e1 = geometry.append(gem.electrode(1))
+// add an electrode at location 20,20,20
+const e1 = geometry.append(gem.locate(20,20,20))
+                   .append(gem.electrode(1))
 // add a nested electrode
 e1.append(gem.electrode(2))
 // render the document
@@ -43,10 +44,15 @@ Methods can generally be chained but care should be taken with the `.append()` m
 The `.render()` method returns a String which is pretty formatted by default. The spacing can be reduced by specifying the padding character using `.render('')`.
 
 ## What about all the other elements?
-Any other element can be added using the gem.Appendable class as follows:
+Any other element can be added using
 ```JavaScript
-const anything = geometry.append(gem.element('anything'[,arg1 [,arg2 [,argN]))
+const anything = geometry.append('anything'[,arg1 [,arg2 [,argN])
 ```
 where the first argument of the constructor is the instruction syntax and any subsequent arguments will appear in brackets after the instruction.
+
+This is a shorthand for
+```JavaScript
+const anything = geometry.append(new gem.element('anything'[,arg1 [,arg2 [,argN]))
+```
 
 It is hoped that with future development, more elements can be added to simplify the usage of the library.
